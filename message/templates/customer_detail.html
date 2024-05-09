@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>{{ customer.name }}</h1>
+  <p>Code: {{ customer.code }}</p>
+  <p>Phone Number: {{ customer.phone_number }}</p>  <!-- Add this line -->
+
+  <h2>Orders</h2>
+  <ul>
+    {% for order in customer.orders.all %}
+      <li>{{ order.item }} (x{{ order.amount }}) - {{ order.time }}</li>
+    {% empty %}
+      <li>No orders found for this customer.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

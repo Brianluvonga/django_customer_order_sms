@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block body %}
+<div class="user-profile-container">
+  <h2>User Details</h2>
+  {% if auth0_user.extra_data.picture %}
+  <img
+    src="{{ auth0_user.extra_data.picture }}"
+    alt="User Profile Picture"
+    class="profile-picture"
+  />
+  {% else %}
+  <p>No profile picture available.</p>
+  {% endif %}
+
+  <div class="user-info">
+    <p><strong>Name:</strong> {{ auth0_user}}</p>
+    <!-- <p><strong>Email:</strong> {{ email}}</p> -->
+    {% if auth0_user.extra_data.user_metadata %}
+    <p><strong>User Metadata:</strong></p>
+    <ul>
+      {% for key, value in auth0_user.extra_data.user_metadata.items %}
+      <li><strong>{{ key }}:</strong> {{ value }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</div>
+{% endblock body %}

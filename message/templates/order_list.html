@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="order-list-container">
+    <h1>Orders</h1>
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Amount</th>
+          <th>Customer Name</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <td>{{ order.item }}</td>
+            <td>{{ order.amount }}</td>
+            <td>{{ order.customer.name }}</td>
+            <td>{{ order.time }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4">No orders found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

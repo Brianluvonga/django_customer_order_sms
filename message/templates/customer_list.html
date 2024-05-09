@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="customer-list-container">
+    <h1>Customers</h1>
+    <table class="customer-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Code</th>
+          <th>Phone Number</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer.name }}</td>
+          <td>{{ customer.code }}</td>
+          <td>{{ customer.phone_number }}</td>
+
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="2">No customers found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
