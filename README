@@ -1,0 +1,52 @@
+Simple Django Application to send a customer an sms when they place an order
+
+# Features
+
+Authentication and Authorization: 
+        - OpenID Connect for authentication and authorization.
+
+
+
+Customers 
+        - register
+        - login
+        - create a customer
+        - create an order
+        - send sms to customer
+
+
+Orders
+        - create an order
+        - view orders
+        - get sms
+
+
+RESTFRAMEWORK
+        - An API for inputting and retrieving customer and order data
+
+SMS Notifications
+        - Integrated with Africa's Talking SMS gateway to send SMS notifications to customers when a new order is placed
+
+Unit Testing
+        - Comprehensive unit tests with coverage checking.
+
+CI/CD
+    - Continuous Integration and Continuous Deployment setup for automated testing and deployment.
+
+
+Getting Started
+
+Clone the repository
+# git clone https://github.com/Brianluvonga/django_customer_order_sms.git
+
+Install the required dependencies
+# pip install -r requirements.txt
+
+
+Testing and Deployment
+# python -m unittest discover tests
+
+Check the test coverage (run individually)
+# coverage run --source=. -m unittest discover tests/
+# coverage report
+# coverage html

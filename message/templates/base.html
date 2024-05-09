@@ -220,6 +220,7 @@
           <a href="/login/auth0" class="auth-link">Login</a>
           {% endif %}
         </div>
+        {% if user.is_authenticated %}
         <div class="customer-order-section">
           <ul class="menu">
             <li>
@@ -242,6 +243,7 @@
             </li>
           </ul>
         </div>
+        {% endif %}
       </nav>
     </header>
 

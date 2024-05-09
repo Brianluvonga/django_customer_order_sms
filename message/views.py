@@ -9,25 +9,11 @@ from .sms import send_sms
 
 from django.http import HttpResponseRedirect
 
-
+# display home screen
 def home(request):
     return render(request, "index.html")
 
-
-def profileSection(request):
-    user = request.user
-    auth0_user = user.social_auth.get(provider="auth0")
-    data = {
-        "id": auth0_user.uid,
-        "username": auth0_user.firstname,
-        "picture": auth0_user.extra_data["picture"],
-    }
-
-    context = {"user_data": json.dumps(data, indent=4), "auth0_user": auth0_user}
-
-    return render(request, "profile.html", context)
-
-
+# view logged in user information
 def profileSection(request):
     user = request.user
     if user.is_authenticated:
@@ -43,10 +29,10 @@ def profileSection(request):
         context = {"user_data": json.dumps(data, indent=4), "auth0_user": auth0_user}
         return render(request, "profile.html", context)
     else:
-        # Handle the case when the user is not authenticated
+        # case when the user is not authenticated
         return redirect("index.html")
 
-
+# logout user and redirect
 def logout(request):
     django_logout(request)
 
@@ -61,22 +47,22 @@ def logout(request):
 
 # orders and customers entries section
 
-
+# view customer entries
 def customer_list(request):
     customers = Customer.objects.all()
     return render(request, "customer_list.html", {"customers": customers})
 
-
+# view customer details
 def customer_detail(request, pk):
     customer = get_object_or_404(Customer, pk=pk)
     return render(request, "customer_detail.html", {"customer": customer})
 
-
+# view order entries
 def order_list(request):
     orders = Order.objects.all()
     return render(request, "order_list.html", {"orders": orders})
 
-
+# create and save a customer
 def customer_create(request):
     if request.method == "POST":
         form = CustomerForm(request.POST)
@@ -87,7 +73,7 @@ def customer_create(request):
         form = CustomerForm()
     return render(request, "customer_form.html", {"form": form})
 
-
+# book an order and send sms
 def order_create(request):
     if request.method == "POST":
         form = OrderForm(request.POST)
@@ -100,17 +86,3 @@ def order_create(request):
         form = OrderForm()
     return render(request, "order_form.html", {"form": form})
 
-
-# def order_create(request):
-#     if request.method == "POST":
-#         form = OrderForm(request.POST)
-#         if form.is_valid():
-#             customer = form.cleaned_data.get("customer")
-#             order = form.save(commit=False)
-#             order.customer = customer
-#             order.save()
-#             send_sms(customer, order)  # Send SMS alert
-#             return redirect("order_list")
-#         else:
-#             form = OrderForm()
-#     return render(request, "order_form.html", {"form": form})
