@@ -6,14 +6,12 @@ Authentication and Authorization:
         - OpenID Connect for authentication and authorization.
 
 
-
 Customers 
         - register
         - login
         - create a customer
         - create an order
         - send sms to customer
-
 
 Orders
         - create an order
@@ -41,6 +39,14 @@ Clone the repository
 
 Install the required dependencies
 # pip install -r requirements.txt
+
+
+Make Migrations
+# python manage.py migrate
+
+
+Runserver
+# python manage.py runserver
 
 
 Testing and Deployment
