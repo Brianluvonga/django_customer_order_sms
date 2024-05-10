@@ -3,11 +3,11 @@ from .models import Customer, Order
 import random
 from django.core.validators import RegexValidator
 
-
+# auto generate code
 def generate_unique_code():
     return str(random.randint(100000, 999999))
 
-
+# pgone number validation criteria
 class PhoneNumberField(forms.CharField):
     default_validators = [RegexValidator(r"^\+254\d{9}$")]
 
@@ -27,7 +27,7 @@ class CustomerForm(forms.ModelForm):
 
     class Meta:
         model = Customer
-        fields = ["name", "phone_number"]  # Exclude 'code' field from the form
+        fields = ["name", "phone_number"]  # Exclude 'code' field from the form since we are autogenerating it
 
     def save(self, commit=True):
         instance = super().save(commit=False)

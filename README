@@ -44,10 +44,8 @@ Install the required dependencies
 Make Migrations
 # python manage.py migrate
 
-
 Runserver
 # python manage.py runserver
-
 
 Testing and Deployment
 # python -m unittest discover tests
