@@ -1,7 +1,7 @@
 import africastalking
 
-username = "insane"
-api_key = "b4b9800271468190e1c156195e83aa2c0b570aad329a1d105ecebf3a1099e634"
+username = "appname"
+api_key = "your-api key"
 
 africastalking.initialize(username, api_key)
 sms = africastalking.SMS

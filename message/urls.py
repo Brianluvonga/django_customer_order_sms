@@ -1,12 +1,5 @@
 from django.urls import path, include
 from . import views
-# from .views import (
-#     customer_list,
-#     customer_detail,
-#     order_list,
-#     customer_create,
-#     order_create,
-# )
 
 
 
